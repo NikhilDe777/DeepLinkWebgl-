@@ -38,11 +38,11 @@
 <body>
 
     <h1>🚀 Hatch Ignite Smart Router</h1>
-    <p>This button detects your device automatically using JavaScript and routes you to the correct app or WebGL target.</p>
+    <p>This button detects your device automatically using JavaScript and routes you to the correct native app or your AWS S3 WebGL target.</p>
 
     <div class="link-box">
         <div class="meta-title">Mathematics ➔ Set Counting (Game ID: 031)</div>
-        <div class="platform-note">Automatically routes to Android/iOS App or WebGL Staging.</div>
+        <div class="platform-note">Automatically routes to Android/iOS App or AWS S3 WebGL Staging.</div>
         
         <button onclick="routeExperience('Mathematics', 'Set Counting', '031')">
             Launch Experience 🚀
@@ -63,14 +63,14 @@
             var isIOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
 
             if (isAndroid || isIOS) {
-                // 📱 MOBILE FLOW: Trigger the custom deep link protocol to open the app
+                // 📱 MOBILE FLOW: Trigger the custom deep link protocol to open the native app
                 var mobileUrl = "hatchignitedl://rmssg.hatchearlylearning.com/exploreignite" + queryParams;
                 console.log("Mobile device detected. Routing to app: " + mobileUrl);
                 window.location.href = mobileUrl;
             } else {
-                // 💻 DESKTOP FLOW: Open the staging server WebGL build in a new browser tab
-                var webglUrl = "https://ignitestaging.hatchearlylearning.com/" + queryParams;
-                console.log("Desktop PC detected. Routing to WebGL: " + webglUrl);
+                // 💻 DESKTOP FLOW: Open the updated AWS S3 location WebGL build in a new browser tab
+                var webglUrl = "https://s3.us-east-1.amazonaws.com/ignitestaging.hatchearlylearning.com/Test/ReleaseTest2026/index.html" + queryParams;
+                console.log("Desktop PC detected. Routing to AWS WebGL: " + webglUrl);
                 window.open(webglUrl, '_blank');
             }
         }
