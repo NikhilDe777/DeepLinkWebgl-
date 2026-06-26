@@ -1,95 +1,80 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hatch Ignite Deep Link & WebGL Tester</title>
+    <title>Hatch Ignite Smart Link Router</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            max-width: 700px;
+            max-width: 600px;
             margin: 40px auto;
             padding: 20px;
             background-color: #f5f5f5;
         }
         h1 { color: #333; border-bottom: 2px solid #333; padding-bottom: 10px; }
-        h2 { color: #555; margin-top: 30px; }
         .link-box {
             background: white;
             border-radius: 8px;
-            padding: 15px;
-            margin: 10px 0;
+            padding: 20px;
+            margin: 20px 0;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        .link-box p { margin: 0 0 8px 0; color: #777; font-size: 13px; }
-        .url-text { font-size: 11px; color: #999; word-break: break-all; margin: 4px 0 8px 0; font-family: monospace; }
-        a {
+        .meta-title { font-weight: bold; color: #222; margin-bottom: 5px; }
+        .platform-note { font-size: 12px; color: #666; margin-bottom: 15px; }
+        button {
             display: inline-block;
-            background-color: #4CAF50;
+            background-color: #6A1B9A;
             color: white;
-            padding: 12px 20px;
-            text-decoration: none;
+            padding: 14px 28px;
+            border: none;
             border-radius: 6px;
-            font-size: 15px;
+            font-size: 16px;
             font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s;
         }
-        a:hover { background-color: #45a049; }
-        .clever { background-color: #1565C0; }
-        .clever:hover { background-color: #0d47a1; }
-        .classlink { background-color: #E65100; }
-        .classlink:hover { background-color: #bf360c; }
-        .explore-android { background-color: #6A1B9A; }
-        .explore-android:hover { background-color: #4a148c; }
-        .explore-webgl { background-color: #00796B; }
-        .explore-webgl:hover { background-color: #004d40; }
+        button:hover { background-color: #4a148c; }
     </style>
 </head>
 <body>
 
-    <h1>🚀 Hatch Ignite Integration Tester</h1>
-
-    <h2>📱 Android Native Deep Links</h2>
-    
-    <div class="link-box">
-        <p>ClassLink → Normal Flow</p>
-        <div class="url-text">hatchignitedl://rms.hatchearlylearning.com/classlink/auth?code=TESTCODE123</div>
-        <a class="classlink" href="hatchignitedl://rms.hatchearlylearning.com/classlink/auth?code=TESTCODE123">
-            ClassLink Login (Android)
-        </a>
-    </div>
+    <h1>🚀 Hatch Ignite Smart Router</h1>
+    <p>This button detects your device automatically using JavaScript and routes you to the correct app or WebGL target.</p>
 
     <div class="link-box">
-        <p>Clever → Normal Flow</p>
-        <div class="url-text">hatchignitedl://rms.hatchearlylearning.com/clever/authweb?code=TESTCODE456</div>
-        <a class="clever" href="hatchignitedl://rms.hatchearlylearning.com/clever/authweb?code=TESTCODE456">
-            Clever Login (Android)
-        </a>
+        <div class="meta-title">Mathematics ➔ Set Counting (Game ID: 031)</div>
+        <div class="platform-note">Automatically routes to Android/iOS App or WebGL Staging.</div>
+        
+        <button onclick="routeExperience('Mathematics', 'Set Counting', '031')">
+            Launch Experience 🚀
+        </button>
     </div>
 
-    <div class="link-box">
-        <p>Mathematics | Set Counting | Game ID: 031</p>
-        <div class="url-text">hatchignitedl://rmssg.hatchearlylearning.com/exploreignite?domain=Mathematics&subdomain=Set%20Counting&gameid=031</div>
-        <a class="explore-android" href="hatchignitedl://rmssg.hatchearlylearning.com/exploreignite?domain=Mathematics&subdomain=Set%20Counting&gameid=031">
-            Open Android App (Mathematics) ✅
-        </a>
-    </div>
+    <script>
+        function routeExperience(domain, subdomain, gameid) {
+            // Encode the parameters securely for URL formatting
+            var encodedDomain = encodeURIComponent(domain);
+            var encodedSubdomain = encodeURIComponent(subdomain);
+            var queryParams = "?domain=" + encodedDomain + "&subdomain=" + encodedSubdomain + "&gameid=" + gameid;
 
+            // Detect the user's platform using the userAgent string
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            
+            var isAndroid = /android/i.test(userAgent);
+            var isIOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
 
-    <h2>🌐 WebGL URL Parameters (Browser Tabs)</h2>
-
-    <div class="link-box">
-        <p>Open WebGL Build without URL Parameters (Default View)</p>
-        <div class="url-text">https://ignitestaging.hatchearlylearning.com</div>
-        <a class="explore-webgl" href="https://ignitestaging.hatchearlylearning.com" target="_blank">
-            Open WebGL (Default)
-        </a>
-    </div>
-
-    <div class="link-box">
-        <p>WebGL Redirect → Mathematics | Set Counting | Game ID: 031</p>
-        <div class="url-text">https://ignitestaging.hatchearlylearning.com/?domain=Mathematics&subdomain=Set%20Counting&gameid=031</div>
-        <a class="explore-webgl" href="https://ignitestaging.hatchearlylearning.com/?domain=Mathematics&subdomain=Set%20Counting&gameid=031" target="_blank">
-            Open WebGL (Mathematics) ✅
-        </a>
-    </div>
+            if (isAndroid || isIOS) {
+                // 📱 MOBILE FLOW: Trigger the custom deep link protocol to open the app
+                var mobileUrl = "hatchignitedl://rmssg.hatchearlylearning.com/exploreignite" + queryParams;
+                console.log("Mobile device detected. Routing to app: " + mobileUrl);
+                window.location.href = mobileUrl;
+            } else {
+                // 💻 DESKTOP FLOW: Open the staging server WebGL build in a new browser tab
+                var webglUrl = "https://ignitestaging.hatchearlylearning.com/" + queryParams;
+                console.log("Desktop PC detected. Routing to WebGL: " + webglUrl);
+                window.open(webglUrl, '_blank');
+            }
+        }
+    </script>
 
 </body>
 </html>
