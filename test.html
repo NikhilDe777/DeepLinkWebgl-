@@ -38,23 +38,27 @@
 <body>
 
     <h1>🚀 Hatch Ignite Smart Router</h1>
-    
+    <p>This router automatically maps your query payloads, including the newly supported Strand configuration parameter layer.</p>
 
     <div class="link-box">
-        <div class="meta-title">Mathematics ➔ Set Counting (Game ID: 031)</div>
-        <div class="platform-note">Automatically routes to Android or AWS S3 WebGL Staging.</div>
+        <div class="meta-title">Mathematics ➔ Operations and Algebraic Thinking ➔ Set Counting (Game ID: 031)</div>
+        <div class="platform-note">Automatically routes to Android, iOS, or AWS S3 WebGL Staging.</div>
         
-        <button onclick="routeExperience('Mathematics', 'Set Counting', '031')">
+        <button onclick="routeExperience('Mathematics', 'Operations and Algebraic Thinking', 'Set Counting', '031')">
             Launch Experience 🚀
         </button>
     </div>
 
     <script>
-        function routeExperience(domain, subdomain, gameid) {
-            // Encode the parameters securely for URL formatting
+        // Updated function signature to receive the strand parameter right after domain
+        function routeExperience(domain, strand, subdomain, gameid) {
+            // Encode all text parameters securely for web URL formatting
             var encodedDomain = encodeURIComponent(domain);
+            var encodedStrand = encodeURIComponent(strand);
             var encodedSubdomain = encodeURIComponent(subdomain);
-            var queryParams = "?domain=" + encodedDomain + "&subdomain=" + encodedSubdomain + "&gameid=" + gameid;
+            
+            // Rebuilt query string to cleanly append the new strand key payload
+            var queryParams = "?domain=" + encodedDomain + "&strand=" + encodedStrand + "&subdomain=" + encodedSubdomain + "&gameid=" + gameid;
 
             // Detect the user's platform using the userAgent string
             var userAgent = navigator.userAgent || navigator.vendor || window.opera;
