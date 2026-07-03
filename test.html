@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hatch Ignite Smart Link Router</title>
+    <title>Hatch Ignite WebGL Link Router</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -37,46 +37,35 @@
 </head>
 <body>
 
-    <h1>🚀 Hatch Ignite Smart Router</h1>
-    <p>This router automatically maps your query payloads, including the newly supported Strand configuration parameter layer.</p>
+    <h1>🚀 Hatch Ignite WebGL Launcher</h1>
+    <p>This page forces WebGL execution directly inside the active web browser across all platforms (Desktop, Android, and iOS).</p>
 
     <div class="link-box">
-        <div class="meta-title">Mathematics ➔ Operations and Algebraic Thinking ➔ Set Counting (Game ID: 031)</div>
-        <div class="platform-note">Automatically routes to Android, iOS, or AWS S3 WebGL Staging.</div>
+        <div class="meta-title">Mathematics ➔ Geometry ➔ Spatial Relationship</div>
+        <p class="platform-note">Target Game ID: 143</p>
         
-        <button onclick="routeExperience('Mathematics', 'Operations and Algebraic Thinking', 'Set Counting', '031')">
-            Launch Experience 🚀
+        <button onclick="launchWebGLOnly('Mathematics', 'Geometry', 'Spatial Relationship', '143')">
+            Launch WebGL Experience 🚀
         </button>
     </div>
 
     <script>
-        // Updated function signature to receive the strand parameter right after domain
-        function routeExperience(domain, strand, subdomain, gameid) {
-            // Encode all text parameters securely for web URL formatting
+        function launchWebGLOnly(domain, strand, subdomain, gameid) {
+            // Encode the text strings safely to handle spaces cleanly (%20 formatting)
             var encodedDomain = encodeURIComponent(domain);
             var encodedStrand = encodeURIComponent(strand);
             var encodedSubdomain = encodeURIComponent(subdomain);
             
-            // Rebuilt query string to cleanly append the new strand key payload
+            // Build the query string parameter matrix matching your backend schema
             var queryParams = "?domain=" + encodedDomain + "&strand=" + encodedStrand + "&subdomain=" + encodedSubdomain + "&gameid=" + gameid;
 
-            // Detect the user's platform using the userAgent string
-            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            // Direct URL path mapping to your testing environment context folder
+            var webglUrl = "https://s3.us-east-1.amazonaws.com/ignitestaging.hatchearlylearning.com/Test/ReleaseTest2026/index.html" + queryParams;
             
-            var isAndroid = /android/i.test(userAgent);
-            var isIOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
-
-            if (isAndroid || isIOS) {
-                // 📱 MOBILE FLOW: Trigger the custom deep link protocol to open the native app
-                var mobileUrl = "hatchignitedl://rmssg.hatchearlylearning.com/exploreignite" + queryParams;
-                console.log("Mobile device detected. Routing to app: " + mobileUrl);
-                window.location.href = mobileUrl;
-            } else {
-                // 💻 DESKTOP FLOW: Open the updated AWS S3 location WebGL build in a new browser tab
-                var webglUrl = "https://s3.us-east-1.amazonaws.com/ignitestaging.hatchearlylearning.com/Test/ReleaseTest2026/index.html" + queryParams;
-                console.log("Desktop PC detected. Routing to AWS WebGL: " + webglUrl);
-                window.open(webglUrl, '_blank');
-            }
+            console.log("Forcing inline WebGL redirection loop target: " + webglUrl);
+            
+            // Open in a new tab for desktop/tablet, or standard direct routing window refresh loops
+            window.open(webglUrl, '_blank');
         }
     </script>
 
