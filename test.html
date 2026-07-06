@@ -3,54 +3,17 @@
 <head>
     <title>Hatch Ignite WebGL Test Matrix Router</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 20px;
-            background-color: #f5f5f5;
-        }
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; background-color: #f5f5f5; }
         h1 { color: #333; border-bottom: 2px solid #333; padding-bottom: 10px; }
         p.subtitle { color: #666; font-size: 14px; margin-bottom: 30px; }
-        .grid-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-        .link-box {
-            background: white;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
+        .grid-container { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .link-box { background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; flex-direction: column; justify-content: space-between; }
         .meta-title { font-weight: bold; color: #222; margin-bottom: 8px; font-size: 15px; min-height: 40px; }
-        .tag {
-            display: inline-block;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 11px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            width: fit-content;
-        }
+        .tag { display: inline-block; padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; margin-bottom: 10px; width: fit-content; }
         .tag-core { background-color: #E3F2FD; color: #0D47A1; }
         .tag-guided { background-color: #F3E5F5; color: #4A148C; }
         .platform-note { font-size: 12px; color: #555; line-height: 1.5; margin-bottom: 15px; }
-        button {
-            display: block;
-            width: 100%;
-            color: white;
-            padding: 12px;
-            border: none;
-            border-radius: 6px;
-            font-size: 14px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
+        button { display: block; width: 100%; color: white; padding: 12px; border: none; border-radius: 6px; font-size: 14px; font-weight: bold; cursor: pointer; transition: background-color 0.2s; }
         .btn-core { background-color: #1565C0; }
         .btn-core:hover { background-color: #0D47A1; }
         .btn-guided { background-color: #6A1B9A; }
@@ -71,7 +34,7 @@
                 <p class="platform-note">
                     <b>Data Entry Matrix #1 (Game ID: 28)</b><br>
                     <b>Domain ID:</b> 12 | <b>Subdomain ID:</b> 15<br>
-                    <b>Strand ID:</b> null (0) | <b>Visual Level Selected:</b> 2
+                    <b>Strand ID:</b> null (0) | <b>Skill Level ID:</b> 2
                 </p>
             </div>
             <button class="btn-core" onclick="launchWebGLOnly('CORE', '12', '0', '15', '2')">Launch Game 28 🚀</button>
@@ -84,7 +47,7 @@
                 <p class="platform-note">
                     <b>Data Entry Matrix #2 (Game ID: 71)</b><br>
                     <b>Domain ID:</b> 12 | <b>Subdomain ID:</b> 15<br>
-                    <b>Strand ID:</b> null (0) | <b>Visual Level Selected:</b> 2
+                    <b>Strand ID:</b> null (0) | <b>Skill Level ID:</b> 2
                 </p>
             </div>
             <button class="btn-guided" onclick="launchWebGLOnly('GUIDED', '12', '0', '15', '2')">Launch Game 71 🚀</button>
@@ -97,7 +60,7 @@
                 <p class="platform-note">
                     <b>Data Entry Matrix #3 (Game ID: 196)</b><br>
                     <b>Domain ID:</b> 19 | <b>Subdomain ID:</b> 22<br>
-                    <b>Strand ID:</b> null (0) | <b>Visual Level Selected:</b> 5
+                    <b>Strand ID:</b> null (0) | <b>Skill Level ID:</b> 5
                 </p>
             </div>
             <button class="btn-core" onclick="launchWebGLOnly('CORE', '19', '0', '22', '5')">Launch Game 196 🚀</button>
@@ -110,10 +73,10 @@
                 <p class="platform-note">
                     <b>Data Entry Matrix #4 (Game ID: 137)</b><br>
                     <b>Domain ID:</b> 35 | <b>Subdomain ID:</b> 40<br>
-                    <b>Strand ID:</b> 5 | <b>Visual Level Selected:</b> 5
+                    <b>Strand ID:</b> null (0) | <b>Skill Level ID:</b> 5
                 </p>
             </div>
-            <button class="btn-guided" onclick="launchWebGLOnly('GUIDED', '35', '5', '40', '5')">Launch Game 137 🚀</button>
+            <button class="btn-guided" onclick="launchWebGLOnly('GUIDED', '35', '0', '40', '5')">Launch Game 137 🚀</button>
         </div>
 
         <div class="link-box">
@@ -123,7 +86,7 @@
                 <p class="platform-note">
                     <b>Data Entry Matrix #5 (Game ID: 161)</b><br>
                     <b>Domain ID:</b> 23 | <b>Subdomain ID:</b> 26<br>
-                    <b>Strand ID:</b> 1 | <b>Visual Level Selected:</b> 6
+                    <b>Strand ID:</b> 1 | <b>Skill Level ID:</b> 6
                 </p>
             </div>
             <button class="btn-guided" onclick="launchWebGLOnly('GUIDED', '23', '1', '26', '6')">Launch Game 161 🚀</button>
@@ -136,7 +99,7 @@
                 <p class="platform-note">
                     <b>Data Entry Matrix #6 (Game ID: 104)</b><br>
                     <b>Domain ID:</b> 12 | <b>Subdomain ID:</b> 14<br>
-                    <b>Strand ID:</b> null (0) | <b>Visual Level Selected:</b> 5
+                    <b>Strand ID:</b> null (0) | <b>Skill Level ID:</b> 5
                 </p>
             </div>
             <button class="btn-guided" onclick="launchWebGLOnly('GUIDED', '12', '0', '14', '5')">Launch Game 104 🚀</button>
@@ -149,7 +112,7 @@
                 <p class="platform-note">
                     <b>Data Entry Matrix #7 (Game ID: 33)</b><br>
                     <b>Domain ID:</b> 23 | <b>Subdomain ID:</b> 25<br>
-                    <b>Strand ID:</b> 1 | <b>Visual Level Selected:</b> 4
+                    <b>Strand ID:</b> 1 | <b>Skill Level ID:</b> 4
                 </p>
             </div>
             <button class="btn-guided" onclick="launchWebGLOnly('GUIDED', '23', '1', '25', '4')">Launch Game 33 🚀</button>
@@ -162,7 +125,7 @@
                 <p class="platform-note">
                     <b>Data Entry Matrix #8 (Game ID: 41)</b><br>
                     <b>Domain ID:</b> 23 | <b>Subdomain ID:</b> 30<br>
-                    <b>Strand ID:</b> 4 | <b>Visual Level Selected:</b> 4
+                    <b>Strand ID:</b> 4 | <b>Skill Level ID:</b> 4
                 </p>
             </div>
             <button class="btn-guided" onclick="launchWebGLOnly('GUIDED', '23', '4', '30', '4')">Launch Game 41 🚀</button>
@@ -177,13 +140,9 @@
                               "&Strandid=" + strandId + 
                               "&subdomainid=" + subdomainId + 
                               "&skilllevelid=" + skilllevelid;
-
             var webglUrl = "https://ignitestaging.hatchearlylearning.com/Test/ReleaseTest2026/index.html" + queryParams;
-            
-            console.log("Forcing redirection loop to target WebGL context: " + webglUrl);
             window.open(webglUrl, '_blank');
         }
     </script>
-
 </body>
 </html>
